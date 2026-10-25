@@ -1,0 +1,41 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=Monitor
+ClassGuid={4D36E96E-E325-11CE-BFC1-08002BE10318}
+Provider=%ProviderName%
+DriverVer=09/25/2026,1.0.0.0
+
+[Manufacturer]
+%ProviderName%=Hannspree,NTamd64
+
+[Hannspree.NTamd64]
+%MonitorName%=Hannspree.Install,MONITOR\HSP0000
+
+[Hannspree.Install]
+Include=monitor.inf
+Needs=Monitor_Install
+CopyFiles=Hannspree.ProfileFiles
+
+[Hannspree.Install.HW]
+AddReg=Hannspree.AddReg
+
+[Hannspree.AddReg]
+; Intentionally empty.
+; The ICC association should be handled by Windows Color Management.
+
+[Hannspree.ProfileFiles]
+hannspree.icc
+
+[SourceDisksNames]
+1=%DiskName%,,
+
+[SourceDisksFiles]
+hannspree.icc=1
+
+[DestinationDirs]
+Hannspree.ProfileFiles=66000
+
+[Strings]
+ProviderName="Hannspree"
+MonitorName="Hannspree Display"
+DiskName="Hannspree ICC Profile"
